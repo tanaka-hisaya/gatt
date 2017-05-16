@@ -270,6 +270,11 @@ func (p *peripheral) WriteCharacteristic(c *Characteristic, value []byte, noRsp 
 	b = p.sendReq(op, b)
 	// TODO: error handling
 	b = b[1:]
+
+	if len(b) > 0 {
+		return errors.New("Can't write characteristic.")
+	}
+
 	return nil
 }
 
